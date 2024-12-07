@@ -8,22 +8,9 @@ private fun solver(rows: List<String>): Int {
         snd.add(splitRow[1].toInt())
     }
 
-    fst.sort()
-    snd.sort()
-
-    var acc = 0
-
-    for (i in rows.indices) {
-        acc += if (fst[i] <= snd[i]) {
-            snd[i] - fst[i]
-        } else {
-            fst[i] - snd[i]
-        }
-    }
-
-    return acc
+    return fst.fold(0) { acc, i -> acc + i * snd.count { it == i } }
 }
 
 fun main() {
-    Problem(1, 11).solve(::solver)
+    Problem(1, 31).solve(::solver)
 }
