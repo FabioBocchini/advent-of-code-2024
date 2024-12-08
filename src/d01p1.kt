@@ -1,3 +1,5 @@
+import utils.Problem
+
 private fun solver(rows: List<String>): Int {
     val fst = mutableListOf<Int>()
     val snd = mutableListOf<Int>()

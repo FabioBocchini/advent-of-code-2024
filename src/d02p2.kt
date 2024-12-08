@@ -1,3 +1,5 @@
+import utils.Problem
+
 private fun isRowSafe(row: List<Int>): Boolean {
     var prev = row.first()
     var direction: Char? = null
