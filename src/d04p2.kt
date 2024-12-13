@@ -1,3 +1,5 @@
+package d04p2
+
 import utils.Problem
 
 private fun walk(map: List<CharArray>): Int {

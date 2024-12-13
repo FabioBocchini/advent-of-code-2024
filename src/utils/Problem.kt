@@ -11,8 +11,8 @@ class Problem(day: Int, private val expectedTestResult: Int) {
     private val testPath = "./tests/$fileName"
     private val inputPath = "./inputs/$fileName"
 
-    fun solve(solver: (List<String>) -> Int) {
-        val testResult = solver(File(testPath).readLines())
+    private fun <T> solve(solver: (T) -> Int, testInpt: T, mainInput: T) {
+        val testResult = solver(testInpt)
 
         if (testResult != expectedTestResult) {
             println("test unsuccessful\nexpected: $expectedTestResult\nbut got: $testResult")
@@ -21,10 +21,22 @@ class Problem(day: Int, private val expectedTestResult: Int) {
 
         val timeSource = TimeSource.Monotonic
         val start = timeSource.markNow()
-        val result = solver(File(inputPath).readLines())
+        val result = solver(mainInput)
         val end = timeSource.markNow()
 
         println("time elapsed: ${end - start}")
         println("result: $result")
+    }
+
+    fun solve(solver: (List<String>) -> Int) {
+        val testInput = File(testPath).readLines()
+        val mainInput = File(inputPath).readLines()
+        solve(solver, testInput, mainInput)
+    }
+
+    fun solveWithoutSplit(solver: (String) -> Int) {
+        val testInput = File(testPath).readText()
+        val mainInput = File(inputPath).readText()
+        solve(solver, testInput, mainInput)
     }
 }

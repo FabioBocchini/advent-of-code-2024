@@ -1,3 +1,5 @@
+package d03p2
+
 import utils.FiniteStateMachine
 import utils.Problem
 import utils.Rule

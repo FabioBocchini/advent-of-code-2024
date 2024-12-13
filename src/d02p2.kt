@@ -1,3 +1,5 @@
+package d02p2
+
 import utils.Problem
 
 private fun isRowSafe(row: List<Int>): Boolean {

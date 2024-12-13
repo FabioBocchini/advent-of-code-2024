@@ -1,3 +1,5 @@
+package d04p1
+
 import utils.Problem
 
 private data class Step(val y: Int, val x: Int, val direction: String?, val pred: Char?)

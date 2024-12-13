@@ -1,3 +1,5 @@
+package d01p2
+
 import utils.Problem
 
 private fun solver(rows: List<String>): Int {
