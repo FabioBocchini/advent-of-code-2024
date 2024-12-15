@@ -3,7 +3,7 @@ package utils
 import java.io.File
 import kotlin.time.TimeSource
 
-class Problem(day: Int, private val expectedTestResult: Int) {
+class Problem(day: Int, private val expectedTestResult: Number) {
     private val fileName = when {
         day < 10 -> "0$day"
         else -> "$day"
@@ -11,7 +11,7 @@ class Problem(day: Int, private val expectedTestResult: Int) {
     private val testPath = "./tests/$fileName"
     private val inputPath = "./inputs/$fileName"
 
-    private fun <T> solve(solver: (T) -> Int, testInpt: T, mainInput: T) {
+    private fun <T> solve(solver: (T) -> Number, testInpt: T, mainInput: T) {
         val testResult = solver(testInpt)
 
         if (testResult != expectedTestResult) {
@@ -28,13 +28,13 @@ class Problem(day: Int, private val expectedTestResult: Int) {
         println("result: $result")
     }
 
-    fun solve(solver: (List<String>) -> Int) {
+    fun solve(solver: (List<String>) -> Number) {
         val testInput = File(testPath).readLines()
         val mainInput = File(inputPath).readLines()
         solve(solver, testInput, mainInput)
     }
 
-    fun solveWithoutSplit(solver: (String) -> Int) {
+    fun solveWithoutSplit(solver: (String) -> Number) {
         val testInput = File(testPath).readText()
         val mainInput = File(inputPath).readText()
         solve(solver, testInput, mainInput)
